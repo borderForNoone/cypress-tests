@@ -3,10 +3,10 @@ name: Cypress Tests with Dashboard Reporting
 on:
   push:
     branches:
-      - main 
+      - main
   pull_request:
     branches:
-      - main  
+      - main
 
 jobs:
   cypress-run:
@@ -23,13 +23,11 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run: npm install
-        working-directory: ./path-to-your-project
+        run: npm ci
 
       - name: Run Cypress tests and upload results to Dashboard
         env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}  
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
         run: |
           npx cypress run --record --key $CYPRESS_RECORD_KEY --project $CYPRESS_PROJECT_ID
-        working-directory: ./path-to-your-project
