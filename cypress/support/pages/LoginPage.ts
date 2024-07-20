@@ -1,9 +1,10 @@
 import { Page } from './Page';
 
 export class LoginPage extends Page {
-  emailInput = 'input[placeholder="Email"]';
-  passwordInput = 'input[placeholder="Password"]';
-  submitButton = 'button[type="submit"]';
+  private emailInput = 'input[placeholder="Email"]';
+  private passwordInput = 'input[placeholder="Password"]';
+  private submitButton = 'button[type="submit"]';
+  private errorMessages = '.error-messages';
 
   constructor(baseUrl: string) {
     super(baseUrl);
@@ -19,12 +20,12 @@ export class LoginPage extends Page {
     cy.get('.navbar').should('contain', username);
   }
 
-  navigateToRegister() {
-    this.visit('/#/register');
+  verifyInvalidLogin() {
+    cy.get(this.errorMessages).should('contain', 'email or password is invalid');
   }
 
-  verifyInvalidLogin() {
-    cy.get('.error-messages').should('contain', 'email or password is invalid');
+  navigateToRegister() {
+    this.visit('/#/register');
   }
 }
 

@@ -1,8 +1,10 @@
 export class Page {
-    constructor(protected baseUrl: string) {}
+  navbarBrand = '.navbar-brand';
+
+  constructor(protected baseUrl: string) {}
   
-    visit(path: string = '') {
-      cy.visit(`${this.baseUrl}${path}`);
-    }
+  visit(path: string = '') {
+    cy.visit(`${this.baseUrl}${path}`);
   }
+}
   
