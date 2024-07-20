@@ -100,7 +100,6 @@ describe('RealWorld App', () => {
     createArticlePage.verifyArticlePage();
   });
   
-
   it('Test Creating a New Article form exists', () => {
     homePage.navigateToLogin();
     homePage.verifyCurrentUrlIncludes('/#/login');

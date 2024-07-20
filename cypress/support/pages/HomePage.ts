@@ -3,7 +3,8 @@ import { Page } from './Page';
 export class HomePage extends Page {
   private articlePreviewSelector = '.article-preview';
   private navbar = '.navbar';
-  private logoutButton = 'button'; // Актуалізуйте селектор, якщо потрібно
+  private logoutButton = 'button'; 
+  private popularTagsSelector = '.tag-list a';
 
   constructor(baseUrl: string) {
     super(baseUrl);
@@ -49,6 +50,21 @@ export class HomePage extends Page {
 
   verifyCurrentUrlIncludes(path: string) {
     cy.url({ timeout: 10000 }).should('include', path);
+  }
+
+  verifyPopularTagsExist() {
+    cy.get(this.popularTagsSelector).should('have.length.greaterThan', 0);
+  }
+
+  clickFirstPopularTag() {
+    cy.get(this.popularTagsSelector).first().click();
+  }
+
+  verifyTagArticles(tag: string) {
+    cy.url({ timeout: 15000 }).should('include', `tag=${tag}`);
+    cy.get(this.articlePreviewSelector).each(($article) => {
+      cy.wrap($article).find('.tag-list').should('contain.text', tag);
+    });
   }
 }
 
