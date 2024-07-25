@@ -6,8 +6,8 @@ The TypeScript Node.js Cypress project.
 
 1. Install Node.js;
 2. Clone the repository where the project is stored:
-    git clone <repository-url>
-    cd <repository-folder>
+    - `git clone https://github.com/borderForNoone/cypress-tests.git`
+    - `cd cypress-tests`
 3. Install Dependencies;
     npm install
 
