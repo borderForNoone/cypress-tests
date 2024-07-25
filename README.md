@@ -13,7 +13,7 @@ The TypeScript Node.js Cypress project.
 
 # Steps to run
 
-cd <repository-folder>
+`cd cypress-tests`
 
 Run the command below
 
